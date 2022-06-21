@@ -16,6 +16,7 @@ object Dependencies {
                 .build()
             val api = retrofit.create(FetchApiService::class.java)
             repository = RealHomeRepository(api)
+            initialized = true
         }
     }
 }
