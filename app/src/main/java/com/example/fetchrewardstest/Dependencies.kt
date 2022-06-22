@@ -3,7 +3,6 @@ package com.example.fetchrewardstest
 import com.example.fetchrewardstest.interactors.HomeInteractor
 import com.example.fetchrewardstest.interactors.RealHomeInteractor
 import com.example.fetchrewardstest.network.FetchApiService
-import com.example.fetchrewardstest.repositories.HomeRepository
 import com.example.fetchrewardstest.repositories.RealHomeRepository
 import retrofit2.Retrofit
 
