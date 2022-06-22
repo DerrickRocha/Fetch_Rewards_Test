@@ -41,7 +41,7 @@ class MainActivity : AppCompatActivity() {
         viewModel.items.observe(this) { items ->
             homeScreenAdapter.hasItems(items)
         }
-        viewModel.error.observe(this) { error ->
+        viewModel.error.observe(this) {
             binding.errorScreen.visibility = View.VISIBLE
         }
     }
