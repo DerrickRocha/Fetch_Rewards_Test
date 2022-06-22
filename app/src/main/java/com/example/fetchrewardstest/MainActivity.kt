@@ -18,6 +18,12 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        setupViews()
+        setupObservers()
+        viewModel.getItems()
+    }
+
+    private fun setupViews() {
         binding.recycler.apply {
             adapter = homeScreenAdapter
             layoutManager = LinearLayoutManager(this@MainActivity)
@@ -26,7 +32,9 @@ class MainActivity : AppCompatActivity() {
             binding.errorScreen.visibility = View.GONE
             viewModel.getItems()
         }
+    }
 
+    private fun setupObservers() {
         viewModel.showLoading.observe(this) { show ->
             binding.loadingIcon.visibility = if (show) View.VISIBLE else View.GONE
         }
@@ -36,6 +44,5 @@ class MainActivity : AppCompatActivity() {
         viewModel.error.observe(this) { error ->
             binding.errorScreen.visibility = View.VISIBLE
         }
-        viewModel.getItems()
     }
 }
