@@ -1,7 +1,6 @@
 package com.example.fetchrewardstest.ui.viewmodels
 
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.fetchrewardstest.Dependencies
@@ -28,9 +27,9 @@ class HomeViewModel(
     private val _error = SingleLiveEvent<Exception>()
 
     fun getItems() {
+        _showLoading.value = true
         viewModelScope.launch(dispatcher) {
             try {
-                _showLoading.postValue(true)
                 val items = interactor.getItems()
                 _showLoading.postValue(false)
                 _items.postValue(items)
