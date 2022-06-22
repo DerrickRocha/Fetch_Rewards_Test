@@ -7,8 +7,10 @@ fun List<Item>.sortByListIdThenByName(): List<Item> {
             compareBy(
                 { it.listId },
                 {
+                    // Extract integer value from name String.
                     val numberFromName = it.name?.filter { name -> name.isDigit() }
                     if (numberFromName.isNullOrBlank()) {
+                        // Use 0 for the value if there is no number found in the String.
                         0
                     } else {
                         numberFromName.toInt()
