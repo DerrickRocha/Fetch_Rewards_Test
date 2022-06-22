@@ -27,32 +27,7 @@ class ItemExtensionsTests {
     }
 
     @Test
-    fun sortByListIdThenByName_whenNamesAreNotValid_shouldBeSortedByListId() {
-        val unsorted = listOf(
-            Item(0,99, "Item 123"),
-            Item(0,47, ""),
-            Item(0,1, ""),
-            Item(0,1, null),
-            Item(0,1, null),
-            Item(0,1, "Item 4"),
-            Item(0,1009, "Item 8"),
-            Item(0,0, ""),
-            Item(0,0, null)
-        )
-        val sorted = unsorted.sortByListIdThenByName()
-        assert(sorted[0].listId == 0)
-        assert(sorted[1].listId == 0)
-        assert(sorted[2].listId == 1)
-        assert(sorted[3].listId == 1)
-        assert(sorted[4].listId == 1)
-        assert(sorted[5].listId == 1)
-        assert(sorted[6].listId == 47)
-        assert(sorted[7].listId == 99)
-        assert(sorted[8].listId == 1009)
-    }
-
-    @Test
-    fun sortByListIdThenByName_whenNamesAreValid_shouldBeSortedByListIdThenName() {
+    fun sortByListIdThenByName_whenListHasItems_shouldBeSortedByListIdThenName() {
         val unsorted = listOf(
             Item(0,90, "Item 275"),
             Item(0,605, "Item 72"),
@@ -72,8 +47,5 @@ class ItemExtensionsTests {
         assert(sorted[5].listId == 90 && sorted[5].name == "Item 10099")
         assert(sorted[6].listId == 605 && sorted[6].name == "Item 0")
         assert(sorted[7].listId == 605 && sorted[7].name == "Item 72")
-
-
-
     }
 }
