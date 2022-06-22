@@ -1,6 +1,5 @@
 package com.example.fetchrewardstest.repositories
 
-import android.util.Log
 import com.example.fetchrewardstest.models.Item
 import com.example.fetchrewardstest.network.FetchApiService
 
