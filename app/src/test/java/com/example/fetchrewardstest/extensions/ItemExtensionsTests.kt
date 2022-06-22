@@ -1,6 +1,5 @@
 package com.example.fetchrewardstest.extensions
 
-import android.util.Log
 import com.example.fetchrewardstest.models.Item
 import org.junit.Test
 
@@ -10,37 +9,35 @@ class ItemExtensionsTests {
     fun filterOutBlankAndNullNames_whenListHasNullAndBlankNames_itemsWithNullAndBlankNamesShouldBeRemoved() {
         val items = listOf(
             Item(0,99, "Item 123"),
-            Item(0,47, "a"),
-            Item(0,1, "b"),
+            Item(0,47, ""),
+            Item(0,1, "Item 22"),
             Item(0,1, ""),
             Item(0,1, null),
             Item(0,1, "Item 4"),
-            Item(0,1009, "d"),
-            Item(0,0, ""),
-            Item(0,0, "f")
+            Item(0,1009, ""),
+            Item(0,0, "Item 19"),
+            Item(0,0, null)
         )
         val filteredItems = items.filterOutBlankAndNullNames()
-        assert(filteredItems.size == 6)
+        assert(filteredItems.size == 4)
         assert(items[0].name == "Item 123")
-        assert(filteredItems[1].name == "a")
-        assert(filteredItems[2].name == "b")
-        assert(filteredItems[3].name == "Item 4")
-        assert(filteredItems[4].name == "d")
-        assert(filteredItems[5].name == "f")
+        assert(filteredItems[1].name == "Item 22")
+        assert(filteredItems[2].name == "Item 4")
+        assert(filteredItems[3].name == "Item 19")
     }
 
     @Test
     fun sortByListIdThenByName_whenNamesAreNotValid_shouldBeSortedByListId() {
         val unsorted = listOf(
             Item(0,99, "Item 123"),
-            Item(0,47, "a"),
-            Item(0,1, "b"),
+            Item(0,47, ""),
+            Item(0,1, ""),
             Item(0,1, null),
             Item(0,1, null),
             Item(0,1, "Item 4"),
-            Item(0,1009, "d"),
-            Item(0,0, "e"),
-            Item(0,0, "f")
+            Item(0,1009, "Item 8"),
+            Item(0,0, ""),
+            Item(0,0, null)
         )
         val sorted = unsorted.sortByListIdThenByName()
         assert(sorted[0].listId == 0)
