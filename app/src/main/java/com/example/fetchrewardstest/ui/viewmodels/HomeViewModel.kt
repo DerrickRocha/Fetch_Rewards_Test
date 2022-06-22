@@ -27,9 +27,9 @@ class HomeViewModel(
     fun getItems() {
         viewModelScope.launch(dispatcher) {
             try {
-                _items.value = interactor.getItems()
+                _items.postValue(interactor.getItems())
             } catch (exception: Exception) {
-                _error.value = exception
+                _error.postValue(exception)
             }
         }
     }
