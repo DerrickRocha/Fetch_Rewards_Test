@@ -21,14 +21,21 @@ class HomeViewModel(
     val items : LiveData<List<Item>> get() = _items
     private val _items = SingleLiveEvent<List<Item>>()
 
+    val showLoading: LiveData<Boolean> get() = _showLoading
+    private val _showLoading = SingleLiveEvent<Boolean>()
+
     val error: LiveData<Exception> get() = _error
     private val _error = SingleLiveEvent<Exception>()
 
     fun getItems() {
         viewModelScope.launch(dispatcher) {
             try {
-                _items.postValue(interactor.getItems())
+                _showLoading.postValue(true)
+                val items = interactor.getItems()
+                _showLoading.postValue(false)
+                _items.postValue(items)
             } catch (exception: Exception) {
+                _showLoading.postValue(false)
                 _error.postValue(exception)
             }
         }

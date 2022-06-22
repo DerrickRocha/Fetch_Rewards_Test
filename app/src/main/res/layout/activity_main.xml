@@ -8,14 +8,14 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        tools:listitem="@layout/list_item_home"/>
 
     <ProgressBar
         android:id="@+id/loading_icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:visibility="gone"/>
+        android:layout_gravity="center"/>
 
     <LinearLayout
         android:id="@+id/error_screen"
