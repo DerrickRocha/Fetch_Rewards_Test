@@ -8,5 +8,5 @@ interface HomeRepository {
 }
 
 class RealHomeRepository(private val service: FetchApiService): HomeRepository {
-    override fun getItems(): List<Item> = service.getList().execute().body()?: emptyList()
+    override fun getItems(): List<Item> = service.getItems().execute().body()?: emptyList()
 }

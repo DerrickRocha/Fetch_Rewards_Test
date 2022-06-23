@@ -6,5 +6,5 @@ import retrofit2.http.GET
 
 interface FetchApiService {
     @GET("hiring.json")
-    fun getList(): Call<List<Item>>
+    fun getItems(): Call<List<Item>>
 }
